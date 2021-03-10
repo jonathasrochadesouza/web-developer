@@ -1,0 +1,8 @@
+.menu_principal {
+    display: flex;
+    flex-direction: row;
+}
+
+.menu_principal p {
+    text-align: right;
+}
