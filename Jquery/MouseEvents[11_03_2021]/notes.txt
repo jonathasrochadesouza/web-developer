@@ -1,0 +1,6 @@
+Events of mouse (web Jquery):
+https://api.jquery.com/category/events/mouse-events/
+
+web em perguntas e respostas!
+
+Static or Dinamic
