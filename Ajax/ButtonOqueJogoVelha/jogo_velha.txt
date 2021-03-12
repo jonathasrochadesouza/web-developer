@@ -1,0 +1,14 @@
+<h3>Como jogar o jogo da velha?</h3>
+ 
+Jogo da Velha  é um jogo de regras extremamente simples.<br>
+Objetivo do Jogo Ser o primeiro a fazer uma sequencia de tres simbolos iguais, 
+seja em uma linha, coluna ou diagonal.
+
+<br>
+<h3>Regras</h3>
+
+Um jogador joga com o círculo ( O ) e outro com os xis ( X ).
+Cada  jogador, na sua vez, desenha (ou coloca a peça ), numa lacuna que esteja vazia.
+<br>
+Quando um jogador conquista o objetivo, costuma-se riscar os três símbolos.
+Quando há empate costuma-se dizer que o jogo “deu velha”.
