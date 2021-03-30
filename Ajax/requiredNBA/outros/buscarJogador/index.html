@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>nba example</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" ></script>
+        <link rel="stylesheet" href="css/app.css">
+        <script>
+        
+        var nba_players = function(){
+            var the_serialized_data = $("#frm_send_nba_info").serialize();
+            var player = $("#player").val();
+            console.log(the_serialized_data);
+
+            $.getJSON('https://www.balldontlie.io/api/v1/players', the_serialized_data, function (data){
+                $('#NBAPlayerName').append( data['data'][0]['first_name'] + ' ' + data['data'][0]['last_name']);
+                $('#NBAPlayerInfo').append( data['data'][0]['team']['full_name'] + ' | ' + data['data'][0]['position'] + ' | ' + + data['data'][0]['height_feet'] + '&#39; ' + data['data'][0]['height_inches'] + '&#39;&#39;|' + data['data'][0]['weight_pounds'] + ' lbs');
+            
+                var player_nome = data['data'][0]['first_name'];  
+                var player_id = data['data'][0]['id'];  
+            });
+        }; 
+
+        $(document).ready(function(){
+            $("#btn_send_player").click(function(){
+                var player = $("#player").val();
+                console.log(player);
+                
+                $('#player').html('');
+                $('#NBAPlayerName').html('');
+                $('#NBAPlayerInfo').html('');
+                $('#NBAPlayerStatsTable').html('');
+                $('#NBA_Games_Table').html('');
+                $('#NBA_Game_Stats_Table').html('');
+                $('#game_line_stats').html('');
+                $('#last_4_games').html('');
+                $('#season_stats').html('');
+                $('#output_NBA_Player_stats').html('<h2 id="season_stats"></h2><table id="NBAPlayerStatsTable" border="1px solid black" align="center"></table>');
+                $('#output_NBA_Games').html('<h2 id="last_4_games"></h2><table id="NBAPlayerStatsTable" border="1px solid black" align="center"></table>');
+                $('#output_NBA_Game_Stats').html('<h2 id="game_line_stats"></h2><table id="NBA_Game_Stats_Table" align="center"></table>');
+
+
+                if (player == '' || isNaN(player) == false) {
+                    $("#player").html('Please enter a valid player');
+                } else {
+                    nba_players();
+                }
+   
+            }); // end click
+
+        }); // end ready
+        </script>
+    </head>
+    <body>              
+        <form id="frm_send_nba_info">
+            <label for="player">Player:</label> 
+            <input type="text"   id="player" name="search">
+            <input type="button" id="btn_send_player" value="Find Player" class="btn btn-primary">
+            <br>
+                <form id = "output_NBA_Player">
+                    <h2 id="NBAPlayerName" style="padding: 10px;"></h2>
+                    <p id="NBAPlayerInfo" style="padding-left: 10px;"></p>
+                </form>    
+        </form>
+        <br>
+        <form id = "output_NBA_Player_stats">
+            <h2 id="season_stats"></h2>
+            <table id="NBAPlayerStatsTable" border="1px solid black" align="center"></table>
+        </form>
+        <br>
+        <form id = "output_NBA_Games">
+            <h2 id="last_4_games"></h2>
+            <table id="NBA_Games_Table" align="center"></table>
+        </form>
+        <br>
+        <form id = "output_NBA_Game_Stats">
+            <h2 id="game_line_stats"></h2>
+            <table id="NBA_Game_Stats_Table" align="center"></table>
+        </form> 
+    </body>
+</html>
