@@ -1,0 +1,29 @@
+// Open VS Code with administrator
+
+// Open license node to commands
+npm init -y
+// Base install node in the folder selected
+npm install express
+
+// run localhost node
+node index.js 
+
+// library node to update page web automatic (server auto update)
+npm install -g nodemon 
+
+// Open server with library nodemon (index.js --> file run of application)
+nodemon index.js
+
+Comments:
+* https://jsonplaceholder.typicode.com/
+* Create file index.js in the package general
+* Code
+* http://localhost:3333/?=name // parameter name
+* http://localhost:3333/?=id&name // and commerce 
+* http://localhost:3333/?=id
+* Use JSON Viewer
+* Banco de homologação e de produção
+* Os parametros devem ser passado pelo corpo da requisição, evitar passar pelo cabeçalho
+* Example default Rest: http://port(domain)/rout/1 = id 1 at the rout
+* Use Insomnia (https://insomnia.rest/download) or Postman (https://www.postman.com/downloads/)
+* Video - YouTube https://youtu.be/PiOmMvTzRcw
