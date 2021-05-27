@@ -1,0 +1,29 @@
+// install
+npm install express body-parser pg-parser pg-promise jest axios --save
+OR
+npm install express body-parser pg-promise jest axios --save
+
+create routes to:
+books
+authors
+editors of books
+
+// Automatic db create
+Sequelize
+https://sequelize.org/
+
+// Documentation to API's
+Swagger
+
+// run 
+node server.js
+
+// enter folder server with file nameFile.js
+cd server.js
+
+npm install express body-parser pg-promise jest 
+axios --save
+
+
+
+
