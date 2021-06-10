@@ -1,0 +1,27 @@
+Examples Imsonia or Postman
+
+json in method 'PUT':
+{
+	"idlivro": 100,
+	"nome": "A Menina e o Porquinho",
+	"editora": 7,
+	"isbn": "978-3-16-148410-1",
+	"quantidade": 21,
+	"assunto": 5,
+	"autor": 13
+}
+http://localhost:3000/book
+
+GET
+http://localhost:3000/books
+
+DELETE
+http://localhost:3000/book/4
+
+FRAMEWORK MATERIAL UI COMPONENTS TEXT
+https://material-ui.com/pt/components/text-fields/#text-field
+
+
+
+
+

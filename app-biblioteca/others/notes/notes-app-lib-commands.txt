@@ -1,0 +1,38 @@
+~ axios
+lib axios of node
+> npm install axios
+in the front
+
+~ home packs
+install home packs
+> npm install axios body-parser express pg-hstore pg pg-promisse sequelize sequelize-c
+
+~ cors
+> npm install cors
+in the back
+
+~ init back
+> node server.js
+
+~ init front
+> npm start
+mpn
+
+~ lib material
+> npm install @material-ui/core
+in the front
+
+~ simple table with lib material
+https://material-ui.com/pt/components/tables/
+
+~ Listar livros
+http://dontpad.com/igorbigode
+
+
+
+
+
+
+
+
+
