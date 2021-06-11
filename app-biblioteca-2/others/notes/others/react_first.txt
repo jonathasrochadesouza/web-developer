@@ -1,0 +1,18 @@
+commands
+
+1 - npx create-react-app your_folder_name
+2 - your_folder_name access using 'cd'
+3 - npm start
+
+lib react to routers
+npm install react-router-dom
+
+Sempre olhar as dependencias instaladas pelo 'package.json' ...
+
+
+
+
+
+
+
+

@@ -1,0 +1,873 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.5
+-- Dumped by pg_dump version 11.5
+
+-- Started on 2021-05-19 19:52:22
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2908 (class 1262 OID 16491)
+-- Name: aulareact; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE aulareact WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Portuguese_Brazil.1252' LC_CTYPE = 'Portuguese_Brazil.1252';
+
+
+ALTER DATABASE aulareact OWNER TO postgres;
+
+\connect aulareact
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 634 (class 1247 OID 16791)
+-- Name: endereco; Type: DOMAIN; Schema: public; Owner: postgres
+--
+
+CREATE DOMAIN public.endereco AS character varying(60);
+
+
+ALTER DOMAIN public.endereco OWNER TO postgres;
+
+--
+-- TOC entry 637 (class 1247 OID 16793)
+-- Name: telefone; Type: DOMAIN; Schema: public; Owner: postgres
+--
+
+CREATE DOMAIN public.telefone AS character varying(16);
+
+
+ALTER DOMAIN public.telefone OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 212 (class 1259 OID 16805)
+-- Name: assunto; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.assunto (
+    codigo integer NOT NULL,
+    tituloassunto character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.assunto OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 16803)
+-- Name: assunto_codigo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.assunto_codigo_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.assunto_codigo_seq OWNER TO postgres;
+
+--
+-- TOC entry 2909 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: assunto_codigo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.assunto_codigo_seq OWNED BY public.assunto.codigo;
+
+
+--
+-- TOC entry 204 (class 1259 OID 16766)
+-- Name: autor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.autor (
+    codigo integer NOT NULL,
+    nome character varying(60) NOT NULL
+);
+
+
+ALTER TABLE public.autor OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 16764)
+-- Name: autor_codigo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.autor_codigo_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.autor_codigo_seq OWNER TO postgres;
+
+--
+-- TOC entry 2910 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: autor_codigo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.autor_codigo_seq OWNED BY public.autor.codigo;
+
+
+--
+-- TOC entry 196 (class 1259 OID 16698)
+-- Name: cadastro; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cadastro (
+    codigo integer NOT NULL,
+    nome character varying(40),
+    telefone character varying(15)
+);
+
+
+ALTER TABLE public.cadastro OWNER TO postgres;
+
+--
+-- TOC entry 198 (class 1259 OID 16742)
+-- Name: cliente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cliente (
+    codigo integer NOT NULL,
+    nome character varying(60) NOT NULL,
+    endereco character varying(100) NOT NULL,
+    telefone character varying(16) NOT NULL
+);
+
+
+ALTER TABLE public.cliente OWNER TO postgres;
+
+--
+-- TOC entry 197 (class 1259 OID 16740)
+-- Name: cliente_codigo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.cliente_codigo_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cliente_codigo_seq OWNER TO postgres;
+
+--
+-- TOC entry 2911 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: cliente_codigo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.cliente_codigo_seq OWNED BY public.cliente.codigo;
+
+
+--
+-- TOC entry 210 (class 1259 OID 16796)
+-- Name: editora; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.editora (
+    codigo integer NOT NULL,
+    nome character varying(60) NOT NULL,
+    endereco public.endereco NOT NULL,
+    telefone public.telefone NOT NULL,
+    gerente character varying(60) NOT NULL
+);
+
+
+ALTER TABLE public.editora OWNER TO postgres;
+
+--
+-- TOC entry 209 (class 1259 OID 16794)
+-- Name: editora_codigo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.editora_codigo_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.editora_codigo_seq OWNER TO postgres;
+
+--
+-- TOC entry 2912 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: editora_codigo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.editora_codigo_seq OWNED BY public.editora.codigo;
+
+
+--
+-- TOC entry 202 (class 1259 OID 16758)
+-- Name: itempedido; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.itempedido (
+    codigo integer NOT NULL,
+    codigopedido integer NOT NULL,
+    codigolivro integer NOT NULL,
+    quantidade integer NOT NULL,
+    valorunitario real NOT NULL
+);
+
+
+ALTER TABLE public.itempedido OWNER TO postgres;
+
+--
+-- TOC entry 201 (class 1259 OID 16756)
+-- Name: itempedido_codigo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.itempedido_codigo_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.itempedido_codigo_seq OWNER TO postgres;
+
+--
+-- TOC entry 2913 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: itempedido_codigo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.itempedido_codigo_seq OWNED BY public.itempedido.codigo;
+
+
+--
+-- TOC entry 207 (class 1259 OID 16779)
+-- Name: livro; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.livro (
+    codigo integer NOT NULL,
+    titulo character varying(100) NOT NULL,
+    isbn character varying(13) NOT NULL,
+    quantidade integer NOT NULL,
+    codigoassunto integer NOT NULL
+);
+
+
+ALTER TABLE public.livro OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 16777)
+-- Name: livro_codigo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.livro_codigo_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.livro_codigo_seq OWNER TO postgres;
+
+--
+-- TOC entry 2914 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: livro_codigo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.livro_codigo_seq OWNED BY public.livro.codigo;
+
+
+--
+-- TOC entry 205 (class 1259 OID 16772)
+-- Name: livroautor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.livroautor (
+    codigolivro integer NOT NULL,
+    codigoautor integer NOT NULL
+);
+
+
+ALTER TABLE public.livroautor OWNER TO postgres;
+
+--
+-- TOC entry 208 (class 1259 OID 16785)
+-- Name: livroeditora; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.livroeditora (
+    codigolivro integer NOT NULL,
+    codigoeditora integer NOT NULL
+);
+
+
+ALTER TABLE public.livroeditora OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 16750)
+-- Name: pedido; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pedido (
+    codigo integer NOT NULL,
+    codigocliente integer NOT NULL,
+    datacompra timestamp without time zone NOT NULL,
+    valortotalcompra real NOT NULL
+);
+
+
+ALTER TABLE public.pedido OWNER TO postgres;
+
+--
+-- TOC entry 199 (class 1259 OID 16748)
+-- Name: pedido_codigo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.pedido_codigo_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.pedido_codigo_seq OWNER TO postgres;
+
+--
+-- TOC entry 2915 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: pedido_codigo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.pedido_codigo_seq OWNED BY public.pedido.codigo;
+
+
+--
+-- TOC entry 2746 (class 2604 OID 16808)
+-- Name: assunto codigo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.assunto ALTER COLUMN codigo SET DEFAULT nextval('public.assunto_codigo_seq'::regclass);
+
+
+--
+-- TOC entry 2743 (class 2604 OID 16769)
+-- Name: autor codigo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.autor ALTER COLUMN codigo SET DEFAULT nextval('public.autor_codigo_seq'::regclass);
+
+
+--
+-- TOC entry 2740 (class 2604 OID 16745)
+-- Name: cliente codigo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente ALTER COLUMN codigo SET DEFAULT nextval('public.cliente_codigo_seq'::regclass);
+
+
+--
+-- TOC entry 2745 (class 2604 OID 16799)
+-- Name: editora codigo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.editora ALTER COLUMN codigo SET DEFAULT nextval('public.editora_codigo_seq'::regclass);
+
+
+--
+-- TOC entry 2742 (class 2604 OID 16761)
+-- Name: itempedido codigo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.itempedido ALTER COLUMN codigo SET DEFAULT nextval('public.itempedido_codigo_seq'::regclass);
+
+
+--
+-- TOC entry 2744 (class 2604 OID 16782)
+-- Name: livro codigo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.livro ALTER COLUMN codigo SET DEFAULT nextval('public.livro_codigo_seq'::regclass);
+
+
+--
+-- TOC entry 2741 (class 2604 OID 16753)
+-- Name: pedido codigo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pedido ALTER COLUMN codigo SET DEFAULT nextval('public.pedido_codigo_seq'::regclass);
+
+
+--
+-- TOC entry 2902 (class 0 OID 16805)
+-- Dependencies: 212
+-- Data for Name: assunto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2894 (class 0 OID 16766)
+-- Dependencies: 204
+-- Data for Name: autor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.autor (codigo, nome) VALUES (1, 'Bill Gates');
+INSERT INTO public.autor (codigo, nome) VALUES (2, 'Umberto Eco');
+INSERT INTO public.autor (codigo, nome) VALUES (3, 'V. C. Andrews');
+INSERT INTO public.autor (codigo, nome) VALUES (4, 'Wayne Dyer');
+INSERT INTO public.autor (codigo, nome) VALUES (5, 'William Bradford Huie');
+INSERT INTO public.autor (codigo, nome) VALUES (6, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (7, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (8, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (9, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (11, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (12, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (13, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (14, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (15, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (16, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (17, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (18, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (19, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (20, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (21, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (22, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (23, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (24, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (25, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (26, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (27, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (28, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (29, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (30, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (31, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (32, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (33, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (34, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (35, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (36, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (37, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (38, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (39, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (40, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (41, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (42, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (43, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (44, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (45, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (46, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (47, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (48, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (49, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (50, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (51, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (52, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (53, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (54, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (55, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (56, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (57, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (58, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (59, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (60, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (61, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (62, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (63, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (64, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (65, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (66, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (67, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (68, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (69, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (70, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (71, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (72, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (73, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (74, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (75, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (76, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (77, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (78, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (79, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (80, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (81, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (82, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (83, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (84, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (85, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (86, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (87, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (88, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (89, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (90, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (91, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (92, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (93, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (94, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (95, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (96, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (97, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (98, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (99, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (100, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (101, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (102, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (103, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (104, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (105, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (106, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (107, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (108, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (109, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (110, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (111, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (112, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (113, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (114, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (115, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (116, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (117, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (118, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (119, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (120, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (121, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (122, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (123, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (124, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (125, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (126, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (127, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (128, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (129, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (130, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (131, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (132, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (133, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (134, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (135, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (136, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (137, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (138, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (139, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (140, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (141, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (142, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (143, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (144, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (145, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (146, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (147, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (148, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (149, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (150, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (151, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (152, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (153, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (154, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (155, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (156, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (157, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (158, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (159, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (160, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (161, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (162, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (163, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (164, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (165, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (166, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (167, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (168, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (169, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (170, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (171, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (172, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (173, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (174, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (175, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (176, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (177, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (178, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (179, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (180, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (181, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (182, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (183, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (184, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (185, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (186, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (187, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (188, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (189, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (190, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (191, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (192, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (193, 'Agatha Christie');
+INSERT INTO public.autor (codigo, nome) VALUES (194, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (195, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (196, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (197, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (198, 'Bill Gates');
+INSERT INTO public.autor (codigo, nome) VALUES (199, 'Tiago Nigro');
+INSERT INTO public.autor (codigo, nome) VALUES (200, 'Tiago Nigro');
+
+
+--
+-- TOC entry 2886 (class 0 OID 16698)
+-- Dependencies: 196
+-- Data for Name: cadastro; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.cadastro (codigo, nome, telefone) VALUES (2, 'FELISBERTO', '998765432');
+INSERT INTO public.cadastro (codigo, nome, telefone) VALUES (1, 'ROBERTINA', '998765432');
+
+
+--
+-- TOC entry 2888 (class 0 OID 16742)
+-- Dependencies: 198
+-- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2900 (class 0 OID 16796)
+-- Dependencies: 210
+-- Data for Name: editora; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2892 (class 0 OID 16758)
+-- Dependencies: 202
+-- Data for Name: itempedido; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2897 (class 0 OID 16779)
+-- Dependencies: 207
+-- Data for Name: livro; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2895 (class 0 OID 16772)
+-- Dependencies: 205
+-- Data for Name: livroautor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2898 (class 0 OID 16785)
+-- Dependencies: 208
+-- Data for Name: livroeditora; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2890 (class 0 OID 16750)
+-- Dependencies: 200
+-- Data for Name: pedido; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2916 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: assunto_codigo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.assunto_codigo_seq', 1, false);
+
+
+--
+-- TOC entry 2917 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: autor_codigo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.autor_codigo_seq', 393, true);
+
+
+--
+-- TOC entry 2918 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: cliente_codigo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.cliente_codigo_seq', 1, false);
+
+
+--
+-- TOC entry 2919 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: editora_codigo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.editora_codigo_seq', 1, false);
+
+
+--
+-- TOC entry 2920 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: itempedido_codigo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.itempedido_codigo_seq', 1, false);
+
+
+--
+-- TOC entry 2921 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: livro_codigo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.livro_codigo_seq', 1, false);
+
+
+--
+-- TOC entry 2922 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: pedido_codigo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.pedido_codigo_seq', 1, false);
+
+
+--
+-- TOC entry 2764 (class 2606 OID 16810)
+-- Name: assunto assunto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.assunto
+    ADD CONSTRAINT assunto_pkey PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2756 (class 2606 OID 16771)
+-- Name: autor autor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.autor
+    ADD CONSTRAINT autor_pkey PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2748 (class 2606 OID 16702)
+-- Name: cadastro cadastro_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cadastro
+    ADD CONSTRAINT cadastro_pkey PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2750 (class 2606 OID 16747)
+-- Name: cliente cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT cliente_pkey PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2754 (class 2606 OID 16763)
+-- Name: itempedido itempedido_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.itempedido
+    ADD CONSTRAINT itempedido_pkey PRIMARY KEY (codigo, codigopedido);
+
+
+--
+-- TOC entry 2760 (class 2606 OID 16784)
+-- Name: livro livro_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.livro
+    ADD CONSTRAINT livro_pkey PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2758 (class 2606 OID 16776)
+-- Name: livroautor livroautor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.livroautor
+    ADD CONSTRAINT livroautor_pkey PRIMARY KEY (codigolivro, codigoautor);
+
+
+--
+-- TOC entry 2762 (class 2606 OID 16789)
+-- Name: livroeditora livroeditora_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.livroeditora
+    ADD CONSTRAINT livroeditora_pkey PRIMARY KEY (codigolivro);
+
+
+--
+-- TOC entry 2752 (class 2606 OID 16755)
+-- Name: pedido pedido_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pedido
+    ADD CONSTRAINT pedido_pkey PRIMARY KEY (codigo);
+
+
+-- Completed on 2021-05-19 19:52:23
+
+--
+-- PostgreSQL database dump complete
+--
+

@@ -1,0 +1,19 @@
+render
+
+Imagem que pedimos para ser carregada no front ou interface! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

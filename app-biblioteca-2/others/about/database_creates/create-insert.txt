@@ -1,0 +1,65 @@
+-- SELECT usuario
+
+select * from public.usuario;
+
+-- INSERT in usuario
+
+insert into public.usuario(email, senha, telefone) values ('jonathasrocha', '01234567', '01234567');
+
+-- Table: public.usuario
+
+-- DROP TABLE public.usuario;
+
+CREATE TABLE public.usuario
+(
+    "idUsuario" integer NOT NULL DEFAULT nextval('"usuario_idUsuario_seq"'::regclass),
+    email character varying(80) COLLATE pg_catalog."default",
+    senha character varying(40) COLLATE pg_catalog."default",
+    telefone character varying(15) COLLATE pg_catalog."default",
+    CONSTRAINT usuario_pkey PRIMARY KEY ("idUsuario")
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.usuario
+    OWNER to postgres;
+
+-- Table: public.livro
+
+-- DROP TABLE public.livro;
+
+CREATE TABLE public.livro
+(
+    idlivro integer NOT NULL,
+    nome character varying(45) COLLATE pg_catalog."default",
+    editora integer NOT NULL,
+    isbn character varying(45) COLLATE pg_catalog."default",
+    quantidade integer,
+    assunto integer NOT NULL,
+    autor integer NOT NULL
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.livro
+    OWNER to postgres;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

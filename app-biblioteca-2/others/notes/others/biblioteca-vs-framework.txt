@@ -1,0 +1,40 @@
+Biblioteca vs Framework
+
+Framework é uma aplicação quase pronta, onde falta a sua parte da implementação
+
+Framework - Todas as funções, classes e etc do código estão interligados entre si, o tornando uma pré aplicação! Bolo quase pronto!
+
+Biblioteca - Funções não interligadas entre si! Cada função e/ou classe é individual e rasolve um problema!
+
+Design Patterns - Não tem nada pronto, é um padrão que a maioria das vezes não trás nenhum código pronto...
+
+Pontos a ser considerados sobre o Frmework a ser utilizado:
+Diferença entre versões
+Versões disponíveis
+Comunidade
+Maturidade
+Suporte
+Donos
+
+Angular - Framework
+React   - Biblioteca
+
+React - Poderosa biblioteca JavaScript - Interpretada pelo Node
+
+Diferenças gritantes:
+Versões do Delphi
+Angular 1 - Angular 2
+Versões do JavaScript
+
+
+
+
+
+
+
+
+
+
+
+
+

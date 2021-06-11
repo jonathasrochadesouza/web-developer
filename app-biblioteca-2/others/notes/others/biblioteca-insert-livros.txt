@@ -1,0 +1,55 @@
+drop table public.livro
+
+CREATE TABLE public.livro (
+    idlivro integer NOT NULL,
+    nome character varying(45),
+    editora integer NOT NULL,
+    isbn character varying(45),
+    quantidade integer,
+    assunto integer NOT NULL,
+    autor integer NOT NULL
+);
+
+
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (4, 'A Menina e o Porquinho', 7, '978-3-16-148410-1', 21, 5, 13);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (5, 'Cem Anos de Solidão', 6, '978-7-57-546567-8', 18, 4, 14);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (6, 'O Falecido Grande Planeta Terra', 5, '978-3-16-148410-2', 15, 5, 16);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (7, 'O Falecido Grande Planeta Terra', 5, '978-3-16-148410-2', 15, 5, 16);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (8, 'O Apanhador no Campo de Centeio', 2, '978-7-57-546567-9', 6, 7, 16);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (9, 'Harry Potter e o Enigma do Príncipe', 3, '978-3-16-148410-3', 9, 8, 17);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (10, 'Harry Potter e a Câmara Secreta', 5, '978-7-57-546568-0', 15, 3, 17);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (11, 'Harry Potter e o Prisioneiro de Azkaban', 4, '978-3-16-148410-4', 12, 5, 17);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (12, 'Harry Potter e o Cálice de Fogo', 3, '978-7-57-546568-1', 9, 5, 17);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (13, 'Harry Potter e a Ordem da Fênix', 1, '978-3-16-148410-5', 3, 2, 17);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (14, 'Harry Potter e as Relíquias da Morte', 2, '978-7-57-546568-2', 6, 3, 17);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (15, 'Harry Potter e a Pedra Filosofal', 7, '978-3-16-148410-6', 21, 5, 17);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (16, 'Um Safado em Dublin', 6, '978-7-57-546568-3', 18, 4, 18);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (17, 'O Senhor dos Anéis', 8, '978-3-16-148410-7', 24, 8, 19);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (18, 'O Hobbit', 9, '978-7-57-546568-4', 27, 2, 19);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (19, 'A Águia Pousou', 4, '978-3-16-148410-2', 12, 1, 20);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (20, 'O Vale das Bonecas', 3, '978-7-57-546567-9', 9, 8, 21);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (21, 'Caim e Abel', 7, '978-3-16-148410-3', 21, 7, 22);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (22, 'O Mundo de Sofia', 8, '978-7-57-546568-0', 24, 3, 23);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (23, 'Você pode curar sua vida', 9, '978-3-16-148410-4', 27, 4, 16);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (24, 'Don Quixote', 4, '978-7-57-546568-1', 12, 6, 25);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (25, 'Pense e Enriqueça', 2, '978-3-16-148410-5', 6, 8, 18);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (26, 'O alquimista', 1, '978-7-57-546568-2', 3, 3, 27);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (27, 'Era uma Vez em Watership Down', 2, '978-3-16-148410-6', 6, 5, 28);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (28, 'Fernão Capelo Gaivota', 5, '978-7-57-546568-3', 15, 4, 29);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (29, 'Uma Vida com Propósitos', 4, '978-3-16-148410-7', 12, 5, 30);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (30, 'As Pontes de Madison', 7, '978-7-57-546568-4', 21, 2, 31);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (31, 'Os Homens que Não Amavam as Mulheres', 9, '978-7-57-546568-5', 27, 3, 32);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (32, 'O Nome da Rosa', 8, '978-3-16-148410-3', 24, 5, 33);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (33, 'O Jardim dos Esquecidos', 3, '978-7-57-546568-0', 9, 5, 34);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (34, 'Seus Pontos Fracos', 6, '978-3-16-148410-4', 18, 2, 35);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (35, 'The Revolt of Mamie Stover', 7, '978-7-57-546568-1', 21, 3, 36);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (36, 'Do mil ao milhão', 7, '978-3-47-145568-5', 9, 8, 38);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (40, 'teste teste', 7, '978-3-16-148410-1', 21, 5, 13);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (41, 'teste teste', 7, '978-3-16-148410-1', 21, 5, 13);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (42, 'Os 3 porquinhos', 1, '12332342342', 10, 1, 10);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (43, 'Os 3 porquinhos', 1, '12332342342', 10, 1, 10);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (50, 'teste teste', 7, '978-3-16-148410-1', 21, 5, 13);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (51, 'teste teste', 7, '978-3-16-148410-1', 21, 5, 13);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (52, 'O Jeito Harvard de ser feliz', 7, '978-3-16-148410-1', 10, 1, 10);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (54, 'O Jeito Harvard de ser feliz', 7, '978-3-16-148410-1', 10, 1, 10);
+INSERT INTO public.livro (idlivro, nome, editora, isbn, quantidade, assunto, autor) VALUES (3, 'teste ok', 8, '978-7-57-546568-3', 24, 1, 12);

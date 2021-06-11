@@ -1,0 +1,12 @@
+form {
+    text-align: center;
+}
+
+.form-general {
+    text-align: center;
+}
+
+.form-align {
+    display: flex;
+    flex-direction: column;
+}
